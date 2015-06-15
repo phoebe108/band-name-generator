@@ -1,3 +1,5 @@
+'use strict';
+
 var express = require('express'); // create pointer to express library, and return module.exports value
 var app = express(); // store and return an application object (server)
 var port = process.env.PORT || 3000; // add port to listen on
@@ -47,7 +49,7 @@ app.post('/noun', function (req, res) {
 // responds to the client with a random verb in json format (a get route)
 app.get('/verb', function (req, res) {
   res.json(getRandomWord(verb));
-})
+});
 
 // create a post route for verbs: run the postWord function using the verb sent from the client and the verb object
 app.post('/verb', function (req, res) {
