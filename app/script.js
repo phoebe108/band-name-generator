@@ -1,8 +1,16 @@
+$('#submitWords').on('submit', function(e) { // register an event handler submits a form entry
+  e.preventDefault(); // stop the page from refreshing when the form is submitted
 
-$('#adjective').click(function () { // register an event handler
-  $.get('http://localhost:3000/adjective', function (data) { // Ajax get request accessing the endpoint
-    $('#ajax-text').text(data.word); // add requested data to element
+  var adjective = $('[name=adjective]').val(); // save user-inputed adjective (from the form) into an object
+  var adjPost;
+
+  // submit user-inputed adjective (from the form) to the server using a post request
+  if (adjective) {
+    adjPost = {word: adjective};
+    $.post('adjective', adjPost, function(response) {
+      var adjectiveRes = response.msg;
+      $('#adjectiveRes').text(adjectiveRes);
     });
-  });
-
+  }
+});
 
