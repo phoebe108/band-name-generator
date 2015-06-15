@@ -40,18 +40,17 @@ $(function() {
   });
 
   $('#generateButton').click(function() {
-    var result = $('#bandNameResult');
 
     $.get('/adjective', function(response) {
-      result.text(response.word);
+      $('#adjective').text(response.word);
     });
 
     $.get('/noun', function(response) {
-      result.append(' ' + response.word);
+      $('#noun').text(response.word);
     });
 
     $.get('/verb', function(response) {
-      result.append(' ' + response.word);
+      $('#verb').text(response.word);
     });
   });
 });
